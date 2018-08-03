@@ -12,13 +12,7 @@ import thunk from 'redux-thunk';
 import NavBar from './components/NavBar';
 
 
-const initialState = {
-  moviesFiltered: ["movie 1", "movie 2"],
-  moviesWatched: ["happy feet", "harry potter"],
-  moviesToWatch: ["smurfs", "simpsons"]
-};
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
 
 render(
   <Provider store={store} >

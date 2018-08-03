@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux'
 import * as actions from './actions/movieActions.js'
 import NavBar from './components/NavBar'
@@ -10,18 +10,38 @@ import WatchedPage from './components/WatchedPage'
 import ToWatchPage from './components/ToWatchPage'
 
 class App extends Component {
+
+
+
+  componentDidMount() {
+    debugger
+    console.log(this.props)
+    // moviesFiltered is undefined, causing this to fail
+    
+    // if (this.props.moviesFiltered.length === 0) {
+    //   console.log('in component did mount')
+
+    //   this.props.actions.fetchMovies()
+    // }
+  }
+
   render() {
     return (
       <div className="background">
 
         <header > 
-          <h1 className="app-title">my movie tracker</h1>
+          <div className="app-title">my movie tracker</div>
         </header>
 
          <Router>
           <React.Fragment>
               <NavBar />
-              <Route exact path="/" component={FilmsPage} />
+
+              <Route 
+              exact path="/" 
+              render={(props) => <FilmsPage {...props} moviesFiltered={this.props.moviesFiltered} />}
+              />
+
               <Route exact path="/watched" component={WatchedPage} />
               <Route exact path="/towatch" component={ToWatchPage} />
             </React.Fragment>
@@ -32,6 +52,7 @@ class App extends Component {
   }
 }
 
+// pass the state as props. This function will subscribe to the Redux store and any updates will update props automatically
 function mapStateToProps(state) {
   console.log('in map state to props')
   return {

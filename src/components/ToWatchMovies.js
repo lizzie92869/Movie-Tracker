@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WatchedMovies = (props) => {
+const ToWatchMovies = (props) => {
 
 	// const listMovies = () => {
 	//     return props.watchedMovies.map(movie => {
@@ -18,4 +18,4 @@ const WatchedMovies = (props) => {
 	)
 }
 
-export default WatchedMovies
+export default ToWatchMovies

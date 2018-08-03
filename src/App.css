@@ -1,11 +1,15 @@
 .background{
   background-color: #404040;
   font-family: 'Fjalla One', sans-serif;
+  padding-bottom: 5%;
 }
 
 /*title*/
 .app-title {
-	font: 0.5rem;
+	font: 1rem;
+	color: #888;
+	padding: 10px; 
+	margin-bottom: 50px;
 }
 /*NavBar*/
 
@@ -16,7 +20,7 @@
 .nav-button{
   margin-left: 5%;
   margin-right: 15%;
-  color: white;
+  color: #000;
   font-size: 1.5em;
   text-decoration: none;
 }
@@ -27,6 +31,7 @@
 
 /*frame to display movies*/
 .frameDisplayMovies {
+  
   border: 0.2rem outset #555;
 /*
   border-radius: 6px;*/
@@ -34,4 +39,6 @@
   margin: 2rem;
   padding: 1rem;
   outline-offset: 0.2rem;
+  padding: 5%;
+
 }
