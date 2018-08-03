@@ -8,13 +8,13 @@ import NavBar from './components/NavBar'
 import FilmsPage from './components/FilmsPage'
 import WatchedPage from './components/WatchedPage'
 import ToWatchPage from './components/ToWatchPage'
+import {fetchMovies} from './actions/movieActions'
 
 class App extends Component {
 
   constructor(props) {
-    debugger
     super(props)
-    props.fetchMovies()
+    fetchMovies()
   }
 
 
@@ -23,11 +23,11 @@ class App extends Component {
     console.log(this.props)
     // moviesFiltered is undefined, causing this to fail
 
-    // if (this.props.moviesFiltered.length === 0) {
-    //   console.log('in component did mount')
+    if (this.props.moviesFiltered.length === 0) {
+      console.log('in component did mount')
 
-    //   this.props.actions.fetchMovies()
-    // }
+      this.props.actions.fetchMovies()
+    }
   }
 
   render() {
@@ -61,7 +61,7 @@ class App extends Component {
 
 // pass the state as props. This function will subscribe to the Redux store and any updates will update props automatically
 function mapStateToProps(state) {
-  debugger
+
   console.log('in map state to props')
   return {
     moviesFiltered: state.movies.moviesFiltered,
