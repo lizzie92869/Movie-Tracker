@@ -1,0 +1,20 @@
+.background{
+  background-color: #404040;
+}
+
+/*NavBar*/
+
+#nav-bar{
+  width: 100%;
+}
+.nav-button{
+  margin-left: 5%;
+  margin-right: 15%;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.active-nav-button{
+  text-decoration: underline;
+}
