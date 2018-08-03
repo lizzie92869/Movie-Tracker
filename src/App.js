@@ -58,13 +58,15 @@ class App extends Component {
   }
 }
 
+
 // pass the state as props. This function will subscribe to the Redux store and any updates will update props automatically
 function mapStateToProps(state) {
+  debugger
   console.log('in map state to props')
   return {
-    moviesFiltered: state.moviesFiltered,
-    moviesWatched: state.moviesWatched,
-    moviesToWatch: state.moviesToWatch
+    moviesFiltered: state.movies.moviesFiltered,
+    moviesWatched: state.movies.moviesWatched,
+    moviesToWatch: state.movies.moviesToWatch
   }
 }
 
