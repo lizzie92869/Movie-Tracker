@@ -13,8 +13,9 @@ let movies = fetchmovies()
 
 
 const FilmsPage = () => 
-  <div>
-  <div>Hello from film page</div>
+  <div className="frameDisplayMovies">
+  <div><p>Here is a list of suggestion from popular movies.</p> 
+  <p>If the movie is in one of the list, it won't be shown here</p></div>
   <div>{movies}</div>
   </div>
 

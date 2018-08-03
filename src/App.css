@@ -1,11 +1,17 @@
 .background{
   background-color: #404040;
+  font-family: 'Fjalla One', sans-serif;
 }
 
+/*title*/
+.app-title {
+	font: 0.5rem;
+}
 /*NavBar*/
 
 #nav-bar{
   width: 100%;
+  font-family: 'Fjalla One', sans-serif;
 }
 .nav-button{
   margin-left: 5%;
@@ -17,4 +23,15 @@
 
 .active-nav-button{
   text-decoration: underline;
+}
+
+/*frame to display movies*/
+.frameDisplayMovies {
+  border: 0.2rem outset #555;
+/*
+  border-radius: 6px;*/
+  font: bold 1rem sans-serif;
+  margin: 2rem;
+  padding: 1rem;
+  outline-offset: 0.2rem;
 }

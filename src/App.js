@@ -15,7 +15,7 @@ class App extends Component {
       <div className="background">
 
         <header > 
-          <h1 className="App-title">my movie tracker</h1>
+          <h1 className="app-title">my movie tracker</h1>
         </header>
 
          <Router>
