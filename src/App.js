@@ -11,13 +11,18 @@ import ToWatchPage from './components/ToWatchPage'
 
 class App extends Component {
 
+  constructor(props) {
+    debugger
+    super(props)
+    props.fetchMovies()
+  }
 
 
   componentDidMount() {
-    debugger
+
     console.log(this.props)
     // moviesFiltered is undefined, causing this to fail
-    
+
     // if (this.props.moviesFiltered.length === 0) {
     //   console.log('in component did mount')
 
@@ -26,6 +31,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="background">
 
