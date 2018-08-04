@@ -11,7 +11,7 @@ export default function moviesReducer(state= {
 	    case 'LOADING_MOVIES':
 	      return Object.assign({}, state, {loading: true})
 	    case 'FETCH_MOVIES':
-	      return {loading: false, moviesFiltered: action.payload}
+	    	return Object.assign({}, state, {loading: false, moviesFiltered: action.payload} )
 	    default:
 	      return state;
 	  }

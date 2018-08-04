@@ -14,18 +14,13 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    fetchMovies()
+    
   }
 
 
   componentDidMount() {
-
-    console.log(this.props)
-    // moviesFiltered is undefined, causing this to fail
-
     if (this.props.moviesFiltered.length === 0) {
       console.log('in component did mount')
-
       this.props.actions.fetchMovies()
     }
   }
