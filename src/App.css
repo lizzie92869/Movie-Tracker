@@ -42,3 +42,9 @@
   padding: 5%;
 
 }
+
+/*Movie Component*/
+.block-movie {
+	display: inline-block;
+	margin: 20px;
+}
