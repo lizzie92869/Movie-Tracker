@@ -2,7 +2,7 @@ import React from 'react';
 import fetch from 'isomorphic-fetch';
 import {fetchMovies} from '../actions/movieActions';
 import Movie from './Movie';
-import Filter from './Filter';
+import {ConnectedFilter} from './Filter';
 
 
 
@@ -14,7 +14,8 @@ const FilmsPage = (props) => {
 
   return (
   <div className="frameDisplayMovies">
-  <Filter/>
+  {/*<Filter moviesFiltered={props.moviesFiltered}/>*/}
+  <ConnectedFilter />
   <div><p>Here is a list of suggestion from popular movies.</p> 
   <p>If the movie is in one of the list, it won't be shown here</p></div>
  {movies}
