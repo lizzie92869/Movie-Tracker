@@ -1,7 +1,7 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch';
-import {fetchMovies} from '../actions/movieActions';
-import Movie from './Movie';
+// import fetch from 'isomorphic-fetch';
+// import {fetchMovies} from '../actions/movieActions';
+import {ConnectedMovie} from './Movie';
 import {ConnectedFilter} from './Filter';
 
 
@@ -10,7 +10,7 @@ import {ConnectedFilter} from './Filter';
 
 const FilmsPage = (props) => {
   const movies = props.moviesFiltered.map(
-    film => <Movie film={film}/>)
+    film => <ConnectedMovie film={film}/>)
 
   return (
   <div className="frameDisplayMovies">

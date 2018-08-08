@@ -4,12 +4,12 @@ import {ConnectedApp} from './App';
 import { render } from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import React from 'react';
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
 
 
 

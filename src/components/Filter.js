@@ -4,11 +4,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/movieActions.js'
 
 class Filter extends Component {
-  // constructor(props) {
-  //   super(props)
-
-  // }
-
 
 
   state = {
@@ -19,49 +14,46 @@ class Filter extends Component {
     searchDate: false
   }
 
-  fetchMoviesByTitle = (e) => {
-// console.log("in fetchFilteredMovies()")
-//   return (dispatch) => {
 
-//     const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
-//     console.log("log:", moviesDBKey)
+  // fetchMoviesByPreferences = (e) => {
 
-//     //const searchTerm =
+  //   //const sorting = this.props //"primary_release_date.asc" or "popularity.desc"
+  //   //const searchYear = this.props.searchYear
+  //   //const searchGenreId= this.props // integer representing the value of the category chosen
+  //   return (dispatch) => {
 
+  //   const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
 
+  //   dispatch({ type: 'LOADING_MOVIES' });
+  //   return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&primary_release_year=${searchYear}&with_genres={searchGenreId}&language=en-US&sort_by=${sorting}&include_video=false&include_adult=false`)
+  //             .then(response => response.json())
+  //             .then(responseData => {
+  //               //dispatch an action with a type and a payload
+  //               const movies = responseData.results
+  //               dispatch({ type: 'FETCH_MOVIES', payload: movies})
+  //             })
+             
+  //   };
+  // }
 
-//     // debugger
+fetchMoviesByTitle = (dispatch) => {
+      
 
-    dispatch({ type: 'LOADING_MOVIES' });
+    const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
+    const searchTerm = this.state.searchTerm
+    
+
+    // dispatch({ type: 'LOADING_MOVIES' });
+
     return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${moviesDBKey}&query=${searchTerm}`)
               .then(response => response.json())
               .then(responseData => {
+
                 //dispatch an action with a type and a payload
                 const movies = responseData.results
                 dispatch({ type: 'FETCH_MOVIES', payload: movies})
-                console.log(this)})
-             
-  };
-
+              })         
 }
-
-  fetchMoviesByPreferences = (e) => {
-
-    //const sorting = //"primary_release_date.asc" or "popularity.desc"
-    //const searchYear = 
-    //const searchGenreId=
-
-    dispatch({ type: 'LOADING_MOVIES' });
-    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&primary_release_year=${searchYear}&with_genres={searchGenreId}&language=en-US&sort_by=${sorting}&include_video=false&include_adult=false`)
-              .then(response => response.json())
-              .then(responseData => {
-                //dispatch an action with a type and a payload
-                const movies = responseData.results
-                dispatch({ type: 'FETCH_MOVIES', payload: movies})
-                console.log(this)})
-             
-  };
-  }
 
 
   updateSearchTerm = e => {
@@ -69,11 +61,33 @@ class Filter extends Component {
       searchTerm: e.target.value,
     })
     console.log("state:", this.state)
+    console.log("state:", this.state.searchTerm)
     console.log("this.props:",this.props)
     console.log("this.props.moviesFiltered:", this.props.moviesFiltered)
     console.log("this.props.actions", this.props.actions)
-    this.props.actions.fetchFilteredMovies()
-  }
+    // this.props.actions.fetchFilteredMovies()
+    debugger
+this.fetchMoviesByTitle()
+}
+
+
+    // console.log("state:", this.state)
+    // console.log("state:", this.state.searchTerm)
+    // console.log("this.props:",this.props)
+    // console.log("this.props.moviesFiltered:", this.props.moviesFiltered)
+    // console.log("this.props.actions", this.props.actions)
+
+
+  // const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
+  // const searchTerm = this.state.searchTerm
+  // fetch(`https://api.themoviedb.org/3/search/movie?api_key=${moviesDBKey}&query=${searchTerm}`)
+  //   .then(response => response.json())
+  //             .then(responseData => {
+  //               //dispatch an action with a type and a payload
+  //               const movies = responseData.results
+  //               this.setState({ moviesFiltered: movies })
+  //             })   
+
 
   updateSearchGenre = e => {
     this.setState({

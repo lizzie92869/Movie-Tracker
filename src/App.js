@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux'
 import * as actions from './actions/movieActions.js'
 import NavBar from './components/NavBar'
 import FilmsPage from './components/FilmsPage'
 import WatchedPage from './components/WatchedPage'
 import ToWatchPage from './components/ToWatchPage'
-import {fetchMovies} from './actions/movieActions'
+// import {fetchMovies} from './actions/movieActions'
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     if (this.props.moviesFiltered.length === 0) {
-      console.log('in component did mount')
+      console.log('in component did mount', this.props.moviesFiltered)
       this.props.actions.fetchMovies()
     }
   }
