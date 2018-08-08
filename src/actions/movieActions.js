@@ -52,3 +52,7 @@ export const removeFilmFromWatchedList = film => ({
   film,
 })
 
+export const removeFilmFromToWatchList = film => ({
+  type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
+  film,
+})

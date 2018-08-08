@@ -19,6 +19,9 @@ export default function moviesReducer(state= {
 	    case 'REMOVE_FILM_FROM_WATCHED_LIST':
 	    	const idx = state.moviesWatched.indexOf(action.film);
 	    	return { ...state, moviesWatched: [].concat.apply([], [state.moviesWatched.slice(0, idx), state.moviesWatched.slice(idx + 1)]) }
+	     case 'REMOVE_FILM_FROM_TO_WATCH_LIST':
+	    	const idx2 = state.moviesToWatch.indexOf(action.film);
+	    	return { ...state, moviesToWatch: [].concat.apply([], [state.moviesToWatch.slice(0, idx2), state.moviesToWatch.slice(idx2 + 1)]) }
 	    default:
 	      return state;
 	  }
