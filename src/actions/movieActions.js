@@ -35,3 +35,11 @@ export const fetchMoviesByTitle = (searchTerm) => {
       });
   };         
 }
+
+export const addFilmToWatchedList = film => ({
+  type: 'ADD_FILM_TO_WATCHED_LIST',
+  film,
+})
+
+
+
