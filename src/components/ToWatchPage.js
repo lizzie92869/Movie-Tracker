@@ -1,13 +1,13 @@
 
 import React from 'react';
-import {ConnectedMovie} from './Movie';
+import {ConnectedMovieToWatch} from './MovieToWatch';
 // import ToWatchMovies from './ToWatchMovies'
 
 const ToWatchPage = (props) => {
 console.log("props from ToWatchPage", props)
 
 	const movies = props.moviesToWatch.map(
-			film => <ConnectedMovie film={film} />
+			film => <ConnectedMovieToWatch film={film} />
 		)
 
 return (
