@@ -41,5 +41,10 @@ export const addFilmToWatchedList = film => ({
   film,
 })
 
+export const addFilmToToWatchList = film => ({
+  type: 'ADD_FILM_TO_TO_WATCH_LIST',
+  film,
+})
+
 
 

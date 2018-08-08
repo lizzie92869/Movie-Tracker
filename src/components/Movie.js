@@ -20,6 +20,11 @@ console.log("moviesWatched prop after", this.props.moviesWatched)
 
 handleToWatchClick = e => {
 console.log("from handleToWatchClick")
+console.log("props avant",this.props)
+console.log("props.film is the film",this.props.film)
+this.props.actions.addFilmToToWatchList(this.props.film)
+console.log("props after", this.props)
+console.log("moviesToWatch prop after", this.props.moviesToWatch)
 }
 
 handleNotInterestedClick = e => {

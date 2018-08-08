@@ -43,8 +43,14 @@ class App extends Component {
               render={(props) => <FilmsPage {...props} moviesFiltered={this.props.moviesFiltered} />}
               />
 
-              <Route exact path="/watched" component={WatchedPage} />
-              <Route exact path="/towatch" component={ToWatchPage} />
+              <Route exact path="/watched" 
+              render={(props) => <WatchedPage {...props} moviesWatched={this.props.moviesWatched} />}
+              />
+
+              <Route exact path="/towatch" 
+              render={(props) => <ToWatchPage {...props} moviesToWatch={this.props.moviesToWatch} />}
+              />
+
             </React.Fragment>
           </Router>
        
