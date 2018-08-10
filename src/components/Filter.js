@@ -2,9 +2,31 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/movieActions.js'
+import Dropdown from './Dropdown'
+
+const GenresTheMovieDB = [ 
+    {"Action": 28}, 
+    {"Adventure": 12}, 
+    {"Animation": 16}, 
+    {"Comedy": 35}, 
+    {"Crime": 80}, 
+    {"Documentary": 99}, 
+    {"Drama": 18}, 
+    {"Family": 10751}, 
+    {"Fantasy": 14},
+    {"History": 36}, 
+    {"Horror": 27},
+    {"Music": 10402},
+    {"Mystery": 9648},
+    {"Romance": 10749},
+    {"Science Fiction": 878},
+    {"TV Movie": 10770},
+    {"Thriller": 53},
+    {"War": 10752},
+    {"Western": 37}
+  ]
 
 class Filter extends Component {
-
 
   state = {
     searchTerm: '',
@@ -51,17 +73,23 @@ class Filter extends Component {
       console.log("this.props.moviesFiltered:", this.props.moviesFiltered)
       console.log("this.props.actions", this.props.actions)
       console.log("this.state.searchTerm", this.state.searchTerm)
-      console.log("this.state.searchTerm.length", this.state.searchTerm.length) 
+      console.log("this.state.searchTerm.length", this.state.searchTerm.length)
+      // we need to pass the value of the target in the fetchMoviesByTitle() because this.state.searchTerm is 1 character off
+      let searchTerm = e.target.value
       if (this.state.searchTerm.length > 1) { 
-        this.props.actions.fetchMoviesByTitle(this.state.searchTerm)
+        this.props.actions.fetchMoviesByTitle(searchTerm)
       }
     }
 
-  updateSearchGenre = e => {
-    this.setState({
-      searchGenre: e.target.value,
-    })
-    console.log(this.state)
+
+  changeStateSearchGenre = (GenreValue) => {
+    debugger
+    // this.setState({
+    //   searchGenre: GenreValue,
+    // })
+    this.state.searchGenre = GenreValue
+    console.log("the state is now:", this.state)
+    console.log("the genre is now:", this.state.searchGenre)
   }
 
   updateSearchYear = e => {
@@ -69,6 +97,10 @@ class Filter extends Component {
       searchYear: e.target.value,
     })
     console.log(this.state)
+    let searchYear = e.target.value
+      if (this.state.searchYear.length === 4) { 
+        this.props.actions.fetchMoviesByPreferences(searchYear)
+      }
   }
 
   // updateSearchPopularity = e => {
@@ -77,40 +109,19 @@ class Filter extends Component {
   //   })
   // }
 
-  // updateSearchDate = e => {
-  //   this.setState({
-  //     searchDate: e.target.value,
-  //   })
-  // }
+  updateSearchDate = e => {
+    this.setState({
+      searchDate: e.target.value,
+    })
+    console.log(this.state)
+  }
 
 
-  // fetchMoviesByPreferences = (e) => {
-
-  //   //const sorting = this.props //"primary_release_date.asc" or "popularity.desc"
-  //   //const searchYear = this.props.searchYear
-  //   //const searchGenreId= this.props // integer representing the value of the category chosen
-  //   return (dispatch) => {
-
-  //   const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
-
-  //   dispatch({ type: 'LOADING_MOVIES' });
-  //   return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&primary_release_year=${searchYear}&with_genres={searchGenreId}&language=en-US&sort_by=${sorting}&include_video=false&include_adult=false`)
-  //             .then(response => response.json())
-  //             .then(responseData => {
-  //               //dispatch an action with a type and a payload
-  //               const movies = responseData.results
-  //               dispatch({ type: 'FETCH_MOVIES', payload: movies})
-  //             })
-             
-  //   };
-  // }
-
-  
   render() {
     return (
  
       <div>
-      <p> Here will be a movie filter to find more targetted suggestions or a title in particular </p>
+      <p> Search by: </p>
 
         <div className="row">
         <form className="col s12" onSubmit={this.filterMovies}>
@@ -121,15 +132,20 @@ class Filter extends Component {
                {/*<button onClick={this.handleSearchTermSubmit}>Search</button>*/}
               {/*</form>*/}
             </div>
+          </div>
+          <div className="row">
+            <div>Get suggestions by: </div>
             <div className="input-field col s2">
               <input  onChange={this.updateSearchYear} placeholder="Year" id="year" type="text" className="validate" />
             </div>
             <div className="input-field col s3">
-              <input onChange={this.updateSearchGenre} placeholder="Genre" id="year" type="text" className="validate" />
+
+            {/*drop menu*/}
+              <Dropdown searchGenre={this.state.searchGenre} changeStateSearchGenre={this.changeStateSearchGenre}/>
             </div>
             <div className="input-field col s2">
               <div><label>
-                <input name="group1" type="radio" checked className="input-field col s2" />
+                <input name="group1" type="radio" className="input-field col s2" />
                 <span>Sort by Date</span>
               </label>
               </div>
@@ -154,7 +170,7 @@ function mapStateToProps(state) {
   return {
     moviesFiltered: state.movies.moviesFiltered,
     moviesWatched: state.movies.moviesWatched,
-    moviesToWatch: state.movies.moviesToWatch
+    moviesToWatch: state.movies.moviesToWatch,
   }
 }
 

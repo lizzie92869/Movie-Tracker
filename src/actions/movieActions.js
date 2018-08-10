@@ -36,6 +36,23 @@ export const fetchMoviesByTitle = (searchTerm) => {
   };         
 }
 
+export const fetchMoviesByPreferences = (searchYear="?", searchGenreId="?", sorting="popularity") => {
+  debugger
+  return (dispatch) => { 
+    const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
+
+    dispatch({ type: 'LOADING_MOVIES' });
+    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&primary_release_year=${searchYear}&with_genres=${searchGenreId}&language=en-US&sort_by=${sorting}&include_video=false&include_adult=false`)
+      .then(response => response.json())
+      .then(responseData => {
+        //dispatch an action with a type and a payload
+        const movies = responseData.results
+        dispatch({ type: 'FETCH_MOVIES', payload: movies})
+      });
+  };         
+}
+
+
 export const addFilmToWatchedList = film => ({
   type: 'ADD_FILM_TO_WATCHED_LIST',
   film,

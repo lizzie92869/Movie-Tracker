@@ -7,24 +7,22 @@ import * as actions from '../actions/movieActions.js'
 class Movie extends Component {
 
 handleWatchedClick = e => {
-console.log("from handleWatchedClick")
-console.log("props avant",this.props)
-console.log("props.film is the film",this.props.film)
-// this.props = Object.assign({}, this.props, {moviesWatched: [...this.props.moviesWatched, this.props.film]})
-// this.setState({Object.assign({}, this.props, {moviesWatched: [...this.props.moviesWatched, this.props.film]})})
+// console.log("from handleWatchedClick")
+// console.log("props avant",this.props)
+// console.log("props.film is the film",this.props.film)
 this.props.actions.addFilmToWatchedList(this.props.film)
-console.log("props after", this.props)
-console.log("moviesWatched prop after", this.props.moviesWatched)
+// console.log("props after", this.props)
+// console.log("moviesWatched prop after", this.props.moviesWatched)
 
 }
 
 handleToWatchClick = e => {
-console.log("from handleToWatchClick")
-console.log("props avant",this.props)
-console.log("props.film is the film",this.props.film)
+// console.log("from handleToWatchClick")
+// console.log("props avant",this.props)
+// console.log("props.film is the film",this.props.film)
 this.props.actions.addFilmToToWatchList(this.props.film)
-console.log("props after", this.props)
-console.log("moviesToWatch prop after", this.props.moviesToWatch)
+// console.log("props after", this.props)
+// console.log("moviesToWatch prop after", this.props.moviesToWatch)
 }
 
 handleNotInterestedClick = e => {
