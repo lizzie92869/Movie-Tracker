@@ -46,9 +46,11 @@ showDropdownMenu = (event) => {
       console.log("this",this)
       console.log("this.props",this.props)
       console.log("this.props.searchGenre",this.props.searchGenre)
+      console.log("this.props.searchYear", this.props.searchYear)
       this.props.changeStateSearchGenre(e.currentTarget.innerText)
-      let GenreId = parseInt(e.target.attributes.value.value)
-      this.props.actions.fetchMoviesByGenre(GenreId)
+      let genreId = parseInt(e.target.attributes.value.value)
+      debugger
+      this.props.actions.fetchMoviesByPreferences({searchYear: 1970, genreId: genreId})
   }
 
 
