@@ -71,8 +71,11 @@ constructor(props){
     this.setState({
       searchGenreId: genreId
     })
+    let sorting
+    this.state.searchPopularity ? sorting="popularity.desc" : sorting="release_date.asc" 
+    let searchYear = this.state.searchYear
     //the state doesn't show up has changed for the genre, as it is asynchronous but the year is changed
-    this.props.actions.fetchMoviesByPreferences({searchYear: this.state.searchYear, genreId: genreId})
+    this.props.actions.fetchMoviesByPreferences({searchYear: searchYear, genreId: genreId, sorting: sorting})
 
   }
 
@@ -81,13 +84,13 @@ constructor(props){
       searchYear: e.target.value,
     })
     console.log(this.state)
-    debugger
     //the state doesn't show up has changed for the year, as it is asynchronous but the genreId is changed
     let searchYear = e.target.value
     let genreId = this.state.searchGenreId
-    debugger
+    let sorting
+    this.state.searchPopularity ? sorting="popularity.desc" : sorting="release_date.asc"
       if (this.state.searchYear.length > 2) { 
-        this.props.actions.fetchMoviesByPreferences({searchYear: searchYear, genreId: genreId})
+        this.props.actions.fetchMoviesByPreferences({searchYear: searchYear, genreId: genreId, sorting: sorting})
       }
   }
 

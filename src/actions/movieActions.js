@@ -40,12 +40,13 @@ export const fetchMoviesByPreferences = (obj) => {
   console.log("obj", obj)
   console.log("obj.searchYear", obj.searchYear)
   console.log("obj.genreId", obj.genreId)
+  console.log("obj.sorting", obj.sorting)
   debugger
   return (dispatch) => { 
     const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
 
     dispatch({ type: 'LOADING_MOVIES' });
-    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&primary_release_year=${obj.searchYear||""}&with_genres=${obj.genreId||""}&language=en-US&sort_by=&include_video=false&include_adult=false`)
+    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&primary_release_year=${obj.searchYear||""}&with_genres=${obj.genreId||""}&sort_by=${obj.sorting}&language=en-US&include_video=false&include_adult=false`)
       .then(response => response.json())
       .then(responseData => {
         //dispatch an action with a type and a payload
