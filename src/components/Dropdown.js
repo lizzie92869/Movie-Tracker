@@ -43,15 +43,15 @@ showDropdownMenu = (event) => {
 
   handleGenreChosen = e => {
       console.log("text of target",e.currentTarget.innerText)
-      debugger 
       console.log("this",this)
       console.log("this.props",this.props)
       console.log("this.props.searchGenre",this.props.searchGenre)
-      debugger
       this.props.changeStateSearchGenre(e.currentTarget.innerText)
-      debugger
-      // this.props.actions.fetchMoviesByPreferences()
+      let GenreId = parseInt(e.target.attributes.value.value)
+      this.props.actions.fetchMoviesByGenre(GenreId)
   }
+
+
 
   render() {
 
@@ -61,25 +61,25 @@ showDropdownMenu = (event) => {
 
           { this.state.displayMenu ? (
           <ul>
-            <li><a key={1} onClick={this.handleGenreChosen} value="Action" href="">Action</a></li>
-            <li><a key={2} onClick={this.handleGenreChosen} href="">Adventure</a></li>
-            <li><a key={3} onClick={this.handleGenreChosen} href="">Animation</a></li>
-            <li><a key={4} onClick={this.handleGenreChosen} href="">Comedy</a></li>
-            <li><a key={5} onClick={this.handleGenreChosen} href="">Crime</a></li>
-            <li><a key={6} onClick={this.handleGenreChosen} href="">Documentary</a></li>
-            <li><a key={7} onClick={this.handleGenreChosen} href="">Drama</a></li>
-            <li><a key={8} onClick={this.handleGenreChosen} href="">Family</a></li>
-            <li><a key={9} onClick={this.handleGenreChosen} href="">Fantasy</a></li>
-            <li><a key={10} onClick={this.handleGenreChosen} href="">History</a></li>
-            <li><a key={11} onClick={this.handleGenreChosen} href="">Horror</a></li>
-            <li><a key={12} onClick={this.handleGenreChosen} href="">Music</a></li>
-            <li><a key={13} onClick={this.handleGenreChosen} href="">Mystery</a></li>
-            <li><a key={14} onClick={this.handleGenreChosen} href="">Romance</a></li>
-            <li><a key={15} onClick={this.handleGenreChosen} href="">Science Fiction</a></li>
-            <li><a key={16} onClick={this.handleGenreChosen} href="">TV Movie</a></li>
-            <li><a key={17} onClick={this.handleGenreChosen} href="">Thriller</a></li>
-            <li><a key={18} onClick={this.handleGenreChosen} href="">War</a></li>
-            <li><a key={19} onClick={this.handleGenreChosen} href="">Western</a></li>
+            <li><a key={1} onClick={this.handleGenreChosen} value="28" href="">Action</a></li>
+            <li><a key={2} onClick={this.handleGenreChosen} value="12">Adventure</a></li>
+            <li><a key={3} onClick={this.handleGenreChosen} value="16">Animation</a></li>
+            <li><a key={4} onClick={this.handleGenreChosen} value="35">Comedy</a></li>
+            <li><a key={5} onClick={this.handleGenreChosen} value="80">Crime</a></li>
+            <li><a key={6} onClick={this.handleGenreChosen} value="99">Documentary</a></li>
+            <li><a key={7} onClick={this.handleGenreChosen} value="18">Drama</a></li>
+            <li><a key={8} onClick={this.handleGenreChosen} value="10751">Family</a></li>
+            <li><a key={9} onClick={this.handleGenreChosen} value="14">Fantasy</a></li>
+            <li><a key={10} onClick={this.handleGenreChosen} value="36">History</a></li>
+            <li><a key={11} onClick={this.handleGenreChosen} value="27">Horror</a></li>
+            <li><a key={12} onClick={this.handleGenreChosen} value="10402">Music</a></li>
+            <li><a key={13} onClick={this.handleGenreChosen} value="9648">Mystery</a></li>
+            <li><a key={14} onClick={this.handleGenreChosen} value="10749">Romance</a></li>
+            <li><a key={15} onClick={this.handleGenreChosen} value="878">Science Fiction</a></li>
+            <li><a key={16} onClick={this.handleGenreChosen} value="10770">TV Movie</a></li>
+            <li><a key={17} onClick={this.handleGenreChosen} value="53">Thriller</a></li>
+            <li><a key={18} onClick={this.handleGenreChosen} value="10752">War</a></li>
+            <li><a key={19} onClick={this.handleGenreChosen} value="37">Western</a></li>
           </ul>
         ):
         (
@@ -93,21 +93,21 @@ showDropdownMenu = (event) => {
   }
 }
 
-// function mapStateToProps(state) {
+function mapStateToProps(state) {
 
-//   console.log('in MapStateToProps in MovieToWatch.js')
-//   return {
-//     searchGenre: state.searchGenre,
-//   }
-// }
+  console.log('in MapStateToProps in MovieToWatch.js')
+  return {
+    moviesFiltered: state.movies.moviesFiltered,
+  }
+}
 
-// function mapDispatchToProps(dispatch) {
-//   return {actions: bindActionCreators(actions, dispatch)}
-// }
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
 
-// export const ConnectedDropdown = connect(mapStateToProps, mapDispatchToProps)(Dropdown)
+export const ConnectedDropdown = connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
-export default Dropdown
+// export default Dropdown
 
 
  

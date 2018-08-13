@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/movieActions.js'
-import Dropdown from './Dropdown'
+import {ConnectedDropdown} from './Dropdown'
 
 // const GenresTheMovieDB = [ 
 //     {"Action": 28}, 
@@ -108,14 +108,17 @@ const GenresTheMovieDB = [
 
 class Filter extends Component {
 
-  state = {
+constructor(props){
+  super();
+  this.state = {
     searchTerm: '',
     searchGenre: '', 
+    searchGenreId: '',
     searchYear: '',
     searchPopularity: true,
     searchDate: false
   }
-
+}
 
   // // using button search for searchTerm: working great !!
 
@@ -162,16 +165,23 @@ class Filter extends Component {
     }
 
 
-  changeStateSearchGenre = (GenreValue) => {
+  changeStateSearchGenre = (genreValue) => {
     debugger
-    // this.setState({
-    //   searchGenre: GenreValue,
-    // })
-    let objectGenre = GenresTheMovieDB.filter(item => item.name == GenreValue)
+    let objectGenre = GenresTheMovieDB.filter(item => item.name == genreValue)
     let genreId = objectGenre[0].id
-    this.state.searchGenre = genreId
+    // this.state.searchGenre = genreValue
+    // this.state.searchGenreId = genreId
+    debugger
+    this.setState({
+      searchGenre: genreValue
+    })
+    this.setState({
+      searchGenreId: genreId
+    })
+
     console.log("the state is now:", this.state)
     console.log("the genre is now:", this.state.searchGenre)
+    console.log("the genre id is now:", this.state.searchGenreId)
   }
 
   updateSearchYear = e => {
@@ -223,7 +233,7 @@ class Filter extends Component {
             <div className="input-field col s3">
 
             {/*drop menu*/}
-              <Dropdown searchGenre={this.state.searchGenre} changeStateSearchGenre={this.changeStateSearchGenre}/>
+              <ConnectedDropdown searchGenre={this.state.searchGenre} searchGenreId={this.state.searchGenreId} changeStateSearchGenre={this.changeStateSearchGenre}/>
             </div>
             <div className="input-field col s2">
               <div><label>

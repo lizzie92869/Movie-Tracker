@@ -1,26 +1,26 @@
-import React from 'react';
-import {ConnectedMovie} from './Movie';
+// import React from 'react';
+// import {ConnectedMovie} from './Movie';
 
-const WatchedMovies = (props) => {
-
-
-	// const listMovies = () => {
-	//     return props.watchedMovies.map(film => {
-	//       return (
-	//         <div>
-	//         <ConnectedMovie film={film} />
-	//         </div>
-	//       )
-	//     })
-  	}
+// const WatchedMovies = (props) => {
 
 
-	return (
+// 	// const listMovies = () => {
+// 	//     return props.watchedMovies.map(film => {
+// 	//       return (
+// 	//         <div>
+// 	//         <ConnectedMovie film={film} />
+// 	//         </div>
+// 	//       )
+// 	//     })
+//   	}
 
-	  <div className="frameDisplayMovies">
 
-	  </div>
-	)
-}
+// 	return (
 
-export default WatchedMovies
+// 	  <div className="frameDisplayMovies">
+
+// 	  </div>
+// 	)
+// }
+
+// export default WatchedMovies

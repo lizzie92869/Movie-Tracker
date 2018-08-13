@@ -1,21 +1,21 @@
-import React from 'react';
+// import React from 'react';
 
-const ToWatchMovies = (props) => {
+// const ToWatchMovies = (props) => {
 
-	// const listMovies = () => {
-	//     return props.watchedMovies.map(movie => {
-	//       return (
-	//         <div>
-	//         movie
-	//         </div>
-	//       )
-	//     })
- //  	}
+// 	// const listMovies = () => {
+// 	//     return props.watchedMovies.map(movie => {
+// 	//       return (
+// 	//         <div>
+// 	//         movie
+// 	//         </div>
+// 	//       )
+// 	//     })
+//  //  	}
 
 
-	return (
-	  // {listMovies}
-	)
-}
+// 	return (
+// 	  // {listMovies}
+// 	)
+// }
 
-export default ToWatchMovies
+// export default ToWatchMovies
