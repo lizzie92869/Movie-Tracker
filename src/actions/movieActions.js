@@ -41,7 +41,6 @@ export const fetchMoviesByPreferences = (obj) => {
   console.log("obj.searchYear", obj.searchYear)
   console.log("obj.genreId", obj.genreId)
   console.log("obj.sorting", obj.sorting)
-  debugger
   return (dispatch) => { 
     const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
 

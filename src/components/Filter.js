@@ -15,7 +15,7 @@ constructor(props){
     searchGenreId: '',
     searchYear: '',
     searchPopularity: true,
-    searchDate: false
+    // searchDate: false
   }
 }
 
@@ -94,18 +94,29 @@ constructor(props){
       }
   }
 
-  // updateSearchPopularity = e => {
-  //   this.setState({
-  //     searchPopularity: e.target.value,
-  //   })
-  // }
-
-  updateSearchDate = e => {
-    this.setState({
-      searchDate: e.target.value,
-    })
-    console.log(this.state)
+  updateSearchPopularity = e => {
+      if (e.target.value === "option_date"){
+        this.setState({
+          searchPopularity: false
+        })
+      }
+      else if (e.target.value === "option_popularity"){
+        this.setState({
+          searchPopularity: true
+        })
+      }
+    let genreId = this.state.searchGenreId
+    let searchYear = this.state.searchYear
+    let sorting
+      if (e.target.value === "option_date"){
+        sorting = "release_date.asc"
+      } 
+      else if (e.target.value === "option_popularity"){
+        sorting = "popularity.desc"
+      }
+    this.props.actions.fetchMoviesByPreferences({searchYear: searchYear, genreId: genreId, sorting: sorting})
   }
+
 
 
   render() {
@@ -136,13 +147,13 @@ constructor(props){
             </div>
             <div className="input-field col s2">
               <div><label>
-                <input name="group1" type="radio" className="input-field col s2" />
+                <input name="filter_sorting" type="radio" onClick={this.updateSearchPopularity} value="option_date" className="input-field col s2" />
                 <span>Sort by Date</span>
               </label>
               </div>
               <div>
               <label>
-                <input name="group1" type="radio" checked className="input-field col s2s"/>
+                <input name="filter_sorting" type="radio" onClick={this.updateSearchPopularity} value="option_popularity"  className="input-field col s2s"/>
                 <span>or Popularity</span>
               </label>
               </div>
