@@ -165,16 +165,19 @@ constructor(props){
     }
 
 
-  changeStateSearchGenre = (genreValue) => {
-    let objectGenre = GenresTheMovieDB.filter(item => item.name == genreValue)
-    let genreId = objectGenre[0].id
+  changeStateSearchGenre = (genreValue, genreId) => {
+    // let objectGenre = GenresTheMovieDB.filter(item => item.name == genreValue)
+    // let genreId = objectGenre[0].id
+    debugger
     this.setState({
       searchGenre: genreValue
     })
     this.setState({
       searchGenreId: genreId
     })
-
+    console.log("the state is now:", this.state)
+    debugger
+    this.props.actions.fetchMoviesByPreferences({searchYear: this.state.searchYear, genreId: genreId})
     // console.log("the state is now:", this.state)
     // console.log("the genre is now:", this.state.searchGenre)
     // console.log("the genre id is now:", this.state.searchGenreId)
