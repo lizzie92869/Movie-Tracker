@@ -4,107 +4,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/movieActions.js'
 import {ConnectedDropdown} from './Dropdown'
 
-// const GenresTheMovieDB = [ 
-//     {"Action": 28}, 
-//     {"Adventure": 12}, 
-//     {"Animation": 16}, 
-//     {"Comedy": 35}, 
-//     {"Crime": 80}, 
-//     {"Documentary": 99}, 
-//     {"Drama": 18}, 
-//     {"Family": 10751}, 
-//     {"Fantasy": 14},
-//     {"History": 36}, 
-//     {"Horror": 27},
-//     {"Music": 10402},
-//     {"Mystery": 9648},
-//     {"Romance": 10749},
-//     {"Science Fiction": 878},
-//     {"TV Movie": 10770},
-//     {"Thriller": 53},
-//     {"War": 10752},
-//     {"Western": 37}
-//   ]
-
-
-const GenresTheMovieDB = [ 
-    {
-      "id": 28,
-      "name": "Action"
-    },
-    {
-      "id": 12,
-      "name": "Adventure"
-    },
-    {
-      "id": 16,
-      "name": "Animation"
-    },
-    {
-      "id": 35,
-      "name": "Comedy"
-    },
-    {
-      "id": 80,
-      "name": "Crime"
-    },
-    {
-      "id": 99,
-      "name": "Documentary"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    },
-    {
-      "id": 10751,
-      "name": "Family"
-    },
-    {
-      "id": 14,
-      "name": "Fantasy"
-    },
-    {
-      "id": 36,
-      "name": "History"
-    },
-    {
-      "id": 27,
-      "name": "Horror"
-    },
-    {
-      "id": 10402,
-      "name": "Music"
-    },
-    {
-      "id": 9648,
-      "name": "Mystery"
-    },
-    {
-      "id": 10749,
-      "name": "Romance"
-    },
-    {
-      "id": 878,
-      "name": "Science Fiction"
-    },
-    {
-      "id": 10770,
-      "name": "TV Movie"
-    },
-    {
-      "id": 53,
-      "name": "Thriller"
-    },
-    {
-      "id": 10752,
-      "name": "War"
-    },
-    {
-      "id": 37,
-      "name": "Western"
-    }
-  ]
 
 class Filter extends Component {
 
@@ -166,21 +65,15 @@ constructor(props){
 
 
   changeStateSearchGenre = (genreValue, genreId) => {
-    // let objectGenre = GenresTheMovieDB.filter(item => item.name == genreValue)
-    // let genreId = objectGenre[0].id
-    debugger
     this.setState({
       searchGenre: genreValue
     })
     this.setState({
       searchGenreId: genreId
     })
-    console.log("the state is now:", this.state)
-    debugger
+    //the state doesn't show up has changed for the genre, as it is asynchronous but the year is changed
     this.props.actions.fetchMoviesByPreferences({searchYear: this.state.searchYear, genreId: genreId})
-    // console.log("the state is now:", this.state)
-    // console.log("the genre is now:", this.state.searchGenre)
-    // console.log("the genre id is now:", this.state.searchGenreId)
+
   }
 
   updateSearchYear = e => {
@@ -188,9 +81,13 @@ constructor(props){
       searchYear: e.target.value,
     })
     console.log(this.state)
+    debugger
+    //the state doesn't show up has changed for the year, as it is asynchronous but the genreId is changed
     let searchYear = e.target.value
+    let genreId = this.state.searchGenreId
+    debugger
       if (this.state.searchYear.length > 2) { 
-        this.props.actions.fetchMoviesByPreferences({searchYear: searchYear})
+        this.props.actions.fetchMoviesByPreferences({searchYear: searchYear, genreId: genreId})
       }
   }
 
