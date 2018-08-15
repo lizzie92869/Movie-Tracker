@@ -10,7 +10,7 @@ handleWatchedClick = e => {
 // console.log("from handleWatchedClick")
 // console.log("props avant",this.props)
 // console.log("props.film is the film",this.props.film)
-this.props.actions.addFilmToWatchedList(this.props.film)
+this.props.actions.createFilmWatchedList(this.props.film)
 // console.log("props after", this.props)
 // console.log("moviesWatched prop after", this.props.moviesWatched)
 
@@ -20,14 +20,14 @@ handleToWatchClick = e => {
 // console.log("from handleToWatchClick")
 // console.log("props avant",this.props)
 // console.log("props.film is the film",this.props.film)
-this.props.actions.addFilmToToWatchList(this.props.film)
+this.props.actions.createFilmToWatchList(this.props.film)
 // console.log("props after", this.props)
 // console.log("moviesToWatch prop after", this.props.moviesToWatch)
 }
 
-handleNotInterestedClick = e => {
-console.log("from handleNotInterestedClick")
-}
+// handleNotInterestedClick = e => {
+// console.log("from handleNotInterestedClick")
+// }
 
 
 
@@ -38,7 +38,6 @@ console.log("from handleNotInterestedClick")
     <div>
     	<button onClick={this.handleWatchedClick} className="waves-effect waves-light btn btn-small green"><i class="small material-icons">playlist_add_check</i></button>  
     	<button onClick={this.handleToWatchClick} className="waves-effect waves-light btn btn-small green"><i class="small material-icons">playlist_add</i></button>
-    	<button onClick={this.handleNotInterestedClick} className="waves-effect waves-light btn btn-small grey"><i class="small material-icons">remove_circle_outline</i></button>
     </div>
     </div>
 	)

@@ -12,10 +12,12 @@ export default function moviesReducer(state= {
 	      return Object.assign({}, state, {loading: true})
 	    case 'FETCH_MOVIES':
 	    	return Object.assign({}, state, {loading: false, moviesFiltered: action.payload} )
-	    case 'ADD_FILM_TO_WATCHED_LIST':
-	    	return { ...state, moviesWatched: state.moviesWatched.concat(action.film) }
+	    // case 'ADD_FILM_TO_WATCHED_LIST':
+	    // 	return { ...state, moviesWatched: state.moviesWatched.concat(action.film) }
 	    case 'ADD_FILM_TO_TO_WATCH_LIST':
 	    	return { ...state, moviesToWatch: state.moviesToWatch.concat(action.film) }
+	    case 'SAVE_WATCHED_MOVIE_SUCCESS':
+	    	return { ...state, moviesWatched: state.moviesWatched.concat(action.film) }
 	    case 'REMOVE_FILM_FROM_WATCHED_LIST':
 	    	const idx = state.moviesWatched.indexOf(action.film);
 	    	return { ...state, moviesWatched: [].concat.apply([], [state.moviesWatched.slice(0, idx), state.moviesWatched.slice(idx + 1)]) }

@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch';
+import MoviesApi from "../api/MoviesApi";
+
 
 
 export function fetchMovies() {
@@ -98,23 +100,86 @@ export const fetchMoviesByPreferences = (obj) => {
 }
 
 
-export const addFilmToWatchedList = film => ({
+
+export const addFilmToWatchedList = film => {
   type: 'ADD_FILM_TO_WATCHED_LIST',
-  film,
-})
+  film
+}
 
-export const addFilmToToWatchList = film => ({
+
+export const addFilmToToWatchList = film => {
   type: 'ADD_FILM_TO_TO_WATCH_LIST',
-  film,
-})
+  film
+}
 
 
-export const removeFilmFromWatchedList = film => ({
-  type: 'REMOVE_FILM_FROM_WATCHED_LIST',
-  film,
-})
+export const createFilmWatchedList = film => {
+  return (dispatch) => {
+        MoviesApi.createFilmWatchedListInApi(film).then((responseMovie) => {
+            console.log(`SAVED...${responseMovie.id}`)
+            console.log(responseMovie)
+          dispatch(addFilmToWatchedList(responseMovie));
+          return responseMovie;
+        })
+            .catch((error) => {
+              throw(error);
+            });
+  };
+}
 
-export const removeFilmFromToWatchList = film => ({
-  type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
-  film,
-})
+
+export const createFilmToWatchList = film => {
+        return (dispatch) => {
+                    MoviesApi.createFilmToWatchListInApi(film).then((responseMovie) => {
+                        console.log(`SAVED...${responseMovie.id}`)
+                        console.log(responseMovie)
+                      dispatch(addFilmToToWatchList(responseMovie));
+                      return responseMovie;
+                    }).catch((error) => {
+                      throw(error);
+                    });
+        };
+}
+
+// export const removeFilmFromWatchedListSuccess = film => ({
+//   type: 'REMOVE_FILM_FROM_WATCHED_LIST',
+//   film
+// })
+
+
+
+// export function removeFilmFromWatchedList = film => {
+//   return (dispatch) => {
+//     MoviesApi.removeFilmFromWatchedListInApi(film).then(() => {
+//         console.log(`DELETED...${film.id}`)
+//         console.log(film)
+//       dispatch(removeFilmFromWatchedListSuccess(film));
+//       return;
+//     }).catch(error => {
+//       throw(error);
+//     });
+//   };
+// }
+
+// export const removeFilmFromToWatchListSuccess = film => ({
+//   type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
+//   film,
+// })
+
+// // export const removeFilmFromToWatchList = film => ({
+// //   type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
+// //   film,
+// // })
+
+// export function removeFilmFromToWatchList = film => {
+//   return (dispatch) => {
+//     MoviesApi.removeFilmFromToWatchListInApi(film).then(() => {
+//         console.log(`DELETED...${film.id}`)
+//         console.log(save)
+//       dispatch(removeFilmFromToWatchListSuccess(film));
+//       return;
+//     }).catch(error => {
+//       throw(error);
+//     });
+//   };
+// }
