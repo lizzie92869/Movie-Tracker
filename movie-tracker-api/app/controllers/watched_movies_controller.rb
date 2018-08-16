@@ -1,11 +1,14 @@
 class WatchedMoviesController < ApplicationController
 
 	def index
-	@watched_movies = watched_movies.all
+		# byebug
+	@watched_movies = WatchedMovie.all
 	render json: @watched_movies, status: :ok
 	end
 
 	def create
+		# byebug
+		binding.pry
 	@watched_movie = WatchedMovie.new(poster_path)
 	@watched_movie.save
 	render json: @watched_movie, status: :created

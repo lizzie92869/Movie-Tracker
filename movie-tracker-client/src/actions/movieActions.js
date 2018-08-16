@@ -114,7 +114,9 @@ export const addFilmToToWatchList = film => {
 
 
 export const createFilmWatchedList = film => {
+ 
   return (dispatch) => {
+
         MoviesApi.createFilmWatchedListInApi(film).then((responseMovie) => {
             console.log(`SAVED...${responseMovie.id}`)
             console.log(responseMovie)
