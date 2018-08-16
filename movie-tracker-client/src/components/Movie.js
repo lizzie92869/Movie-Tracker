@@ -10,6 +10,7 @@ handleWatchedClick = e => {
 // console.log("from handleWatchedClick")
 // console.log("props avant",this.props)
 // console.log("props.film is the film",this.props.film)
+e.preventDefault();
 this.props.actions.createFilmWatchedList(this.props.film)
 // console.log("props after", this.props)
 // console.log("moviesWatched prop after", this.props.moviesWatched)
@@ -17,6 +18,7 @@ this.props.actions.createFilmWatchedList(this.props.film)
 }
 
 handleToWatchClick = e => {
+e.preventDefault();
 // console.log("from handleToWatchClick")
 // console.log("props avant",this.props)
 // console.log("props.film is the film",this.props.film)

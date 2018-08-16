@@ -46,6 +46,7 @@ class MoviesApi {
       return error;
     });
   }
+  
 
   static removeFilmFromToWatchListInApi(film) {
     const request = new  Request(`http://localhost:3001/towatchmovies/${film.id}`, {
