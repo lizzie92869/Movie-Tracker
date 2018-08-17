@@ -30,19 +30,15 @@ class MoviesApi {
   }
 
   static createFilmWatchedListInApi(film) {
-
-    const request = new Request(`http://localhost:3000/watchedmovies`, {
+   const request = new Request(`http://localhost:3000/watchedmovies`, {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Content-Type': 'application/json'
       }),
       body: JSON.stringify(film)
     });
 
     return fetch(request).then(response => {
-          debugger
-      // console.log("reponse.json",response.json())
       return response.json();
     }).catch((error) => {
       return error;

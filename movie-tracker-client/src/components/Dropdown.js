@@ -48,7 +48,7 @@ showDropdownMenu = (event) => {
       console.log("this.props.searchGenre",this.props.searchGenre)
       console.log("this.props.searchYear", this.props.searchYear)
       let genreValue = e.currentTarget.innerText
-      let genreId = parseInt(e.target.attributes.value.value)
+      let genreId = parseInt(e.target.attributes.value.value, 10)
       this.props.changeStateSearchGenre(genreValue, genreId)
       
       // this.props.actions.fetchMoviesByPreferences({searchYear: 1970, genreId: genreId})
@@ -60,7 +60,7 @@ showDropdownMenu = (event) => {
 
     return (
         <div  className="dropdown" >
-         <div className="button" onClick={this.showDropdownMenu}> Genres <i class="small material-icons">arrow_drop_down</i> </div>
+         <div className="button" onClick={this.showDropdownMenu}> Genres <i className="small material-icons">arrow_drop_down</i> </div>
 
           { this.state.displayMenu ? (
           <ul>

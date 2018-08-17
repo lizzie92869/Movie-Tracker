@@ -23,10 +23,10 @@ this.props.actions.removeFilmFromToWatchList(this.props.film)
 	render() {
     return (
 	 <div className="block-movie">
-     <a key={this.props.film.id} href="#"><img width="150" src={"https://image.tmdb.org/t/p/w185/"+this.props.film.poster_path}/></a>
+     <div key={this.props.film.id}><img alt="movie_poster" width="150" src={"https://image.tmdb.org/t/p/w185/"+this.props.film.poster_path}/></div>
     <div>
-    	<button onClick={this.handleWatchedClick} className="waves-effect waves-light btn btn-small green"><i class="small material-icons">playlist_add_check</i></button>  
-    	<button onClick={this.handleRemoveFromToWatch} className="waves-effect waves-light btn btn-small grey"><i class="small material-icons">remove_circle_outline</i></button>
+    	<button onClick={this.handleWatchedClick} className="waves-effect waves-light btn btn-small green"><i className="small material-icons">playlist_add_check</i></button>  
+    	<button onClick={this.handleRemoveFromToWatch} className="waves-effect waves-light btn btn-small grey"><i className="small material-icons">remove_circle_outline</i></button>
     </div>
     </div>
 	)
