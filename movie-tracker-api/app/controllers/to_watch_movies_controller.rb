@@ -1,5 +1,6 @@
 class ToWatchMoviesController < ApplicationController
-	 def index
+
+	def index
     @to_watch_movies = ToWatchMovie.all
     render json: @to_watch_movies, status: :ok
   end
