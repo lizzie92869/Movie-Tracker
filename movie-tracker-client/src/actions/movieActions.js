@@ -101,6 +101,30 @@ export const fetchMoviesByPreferences = (obj) => {
 
 
 
+
+export const fetchMoviesWatched = () => {
+  return (dispatch) => { 
+    dispatch({ type: 'LOADING_MOVIES' });
+    return fetch("http://localhost:3000/watchedmovies")
+    .then(response => response.json())
+    .then(responseData => {const movies =responseData
+    dispatch({ type: 'LOAD_WATCHED_MOVIES', payload: movies})
+    });
+  };
+}
+
+export const fetchMoviesToWatch = () => {
+  return (dispatch) => { 
+    dispatch({ type: 'LOADING_MOVIES' });
+    return fetch("http://localhost:3000/towatchmovies")
+    .then(response => response.json())
+    .then(responseData => {const movies =responseData
+    dispatch({ type: 'LOAD_TO_WATCH_MOVIES', payload: movies})
+    });
+  };
+}
+
+
 export const addFilmToWatchedList = film => {
   return {
   type: 'ADD_FILM_TO_WATCHED_LIST',
@@ -123,7 +147,7 @@ export const createFilmWatchedList = film => {
       MoviesApi.createFilmWatchedListInApi(film).then((responseMovie) => {
             console.log(`SAVED...${responseMovie.id}`)
             console.log(responseMovie)
-          dispatch(addFilmToToWatchList(responseMovie));
+          dispatch(addFilmToWatchedList(responseMovie));
           return responseMovie;
         }).catch((error) => {
           throw(error);
@@ -137,10 +161,10 @@ export const createFilmToWatchList = film => {
           MoviesApi.createFilmToWatchListInApi(film).then((responseMovie) => {
               console.log(`SAVED...${responseMovie.id}`)
               console.log(responseMovie)
-            dispatch(addFilmToToWatchList(responseMovie));
-            return responseMovie;
-          }).catch((error) => {
-            throw(error);
+              dispatch(addFilmToToWatchList(responseMovie));
+              return responseMovie;
+            }).catch((error) => {
+              throw(error);
           });
       };
 }
@@ -165,25 +189,25 @@ export const createFilmToWatchList = film => {
 //   };
 // }
 
-// export const removeFilmFromToWatchListSuccess = film => ({
-//   type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
-//   film,
-// })
+export const removeFilmFromToWatchListSuccess = film => ({
+  type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
+  film,
+})
 
 // // export const removeFilmFromToWatchList = film => ({
 // //   type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
 // //   film,
 // // })
 
-// export function removeFilmFromToWatchList = film => {
-//   return (dispatch) => {
-//     MoviesApi.removeFilmFromToWatchListInApi(film).then(() => {
-//         console.log(`DELETED...${film.id}`)
-//         console.log(save)
-//       dispatch(removeFilmFromToWatchListSuccess(film));
-//       return;
-//     }).catch(error => {
-//       throw(error);
-//     });
-//   };
-// }
+export const removeFilmFromToWatchList = film => {
+  return (dispatch) => {
+    MoviesApi.removeFilmFromToWatchListInApi(film).then(() => {
+        console.log(`DELETED...${film.id}`)
+        console.log(film)
+      dispatch(removeFilmFromToWatchListSuccess(film));
+      return;
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}

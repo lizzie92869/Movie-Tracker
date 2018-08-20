@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux'
 import * as actions from './actions/movieActions.js'
@@ -23,6 +23,8 @@ class App extends Component {
       console.log('in component did mount', this.props.moviesFiltered)
       this.props.actions.fetchMovies()
     }
+    this.props.actions.fetchMoviesWatched()
+    this.props.actions.fetchMoviesToWatch()
   }
 
   render() {

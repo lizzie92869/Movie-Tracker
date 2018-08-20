@@ -1,16 +1,17 @@
 class MoviesApi {
 
-  static fetchMoviesToWatch() {
-    return fetch(`http://localhost:3000/towatchmovies`)
-    .then((response) => response.json())
-    .catch((error) => error)
-  }
+  // static fetchMoviesToWatch() {
+  //   return fetch(`http://localhost:3000/towatchmovies`)
+  //   .then((response) => response.json())
+  //   .catch((error) => error)
+  // }
 
-  static fetchMoviesWatched() {
-    return fetch(`http://localhost:3000/watchedmovies`)
-    .then((response) => response.json())
-    .catch((error) => error)
-  }
+  // static fetchWatchedMovies() {
+    
+  //   return fetch(`http://localhost:3000/watchedmovies`)
+  //   .then((response) => response.json())
+  //   .catch((error) => error)
+  // }
 
   static createFilmToWatchListInApi(film) {
 
