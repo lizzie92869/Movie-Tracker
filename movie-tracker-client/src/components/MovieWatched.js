@@ -17,8 +17,6 @@ console.log("from handleRemoveFromWatched")
 this.props.actions.removeFilmFromWatchedList(this.props.film)
 }
 
-
-
 	render() {
     return (
 	 <div className="block-movie">

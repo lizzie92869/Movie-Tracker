@@ -169,41 +169,54 @@ export const createFilmToWatchList = film => {
       };
 }
 
-// export const removeFilmFromWatchedListSuccess = film => ({
-//   type: 'REMOVE_FILM_FROM_WATCHED_LIST',
-//   film
-// })
+
+export const removeFilmFromWatchedListSuccess = film => ({
+  type: 'REMOVE_FILM_FROM_WATCHED_LIST',
+  film
+
+})
 
 
 
-// export function removeFilmFromWatchedList = film => {
-//   return (dispatch) => {
-//     MoviesApi.removeFilmFromWatchedListInApi(film).then(() => {
-//         console.log(`DELETED...${film.id}`)
-//         console.log(film)
-//       dispatch(removeFilmFromWatchedListSuccess(film));
-//       return;
-//     }).catch(error => {
-//       throw(error);
-//     });
-//   };
-// }
+export const removeFilmFromWatchedList = film => {
+
+  // 1.find the movie in the API
+  // 2.delete it
+  // 3.remove it from state
+
+  return (dispatch) => {
+  // 1.find the movie in the API
+  // 2.delete it
+    MoviesApi.removeFilmFromWatchedListInApi(film).then(() => {
+        console.log(`DELETED...${film.id}`)
+        console.log(film)
+  // 3.remove it from state
+      dispatch(removeFilmFromWatchedListSuccess(film));
+      return;
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
 
 export const removeFilmFromToWatchListSuccess = film => ({
   type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
   film,
 })
 
-// // export const removeFilmFromToWatchList = film => ({
-// //   type: 'REMOVE_FILM_FROM_TO_WATCH_LIST',
-// //   film,
-// // })
 
 export const removeFilmFromToWatchList = film => {
+  // 1.find the movie in the API
+  // 2.delete it
+  // 3.remove it from state
+
   return (dispatch) => {
+  // 1.find the movie in the API
+  // 2.delete it
     MoviesApi.removeFilmFromToWatchListInApi(film).then(() => {
         console.log(`DELETED...${film.id}`)
         console.log(film)
+  // 3.remove it from state
       dispatch(removeFilmFromToWatchListSuccess(film));
       return;
     }).catch(error => {
@@ -211,3 +224,5 @@ export const removeFilmFromToWatchList = film => {
     });
   };
 }
+
+
