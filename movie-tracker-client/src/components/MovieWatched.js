@@ -7,9 +7,7 @@ import * as actions from '../actions/movieActions.js'
 class MovieWatched extends Component {
 
 handleToWatchClick = e => {
-this.props.actions.addFilmToToWatchList(this.props.film)
-console.log("props after", this.props)
-console.log("moviesToWatch prop after", this.props.moviesToWatch)
+this.props.actions.createFilmToWatchList(this.props.film)
 }
 
 handleRemoveFromWatched = e => {
