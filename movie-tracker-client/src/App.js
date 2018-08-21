@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.css'; // thank to webpack we can import css / bootstrap like this
 import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux'

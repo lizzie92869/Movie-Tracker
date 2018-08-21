@@ -46,3 +46,7 @@ function mapDispatchToProps(dispatch) {
 
 export const ConnectedMovieToWatch = connect(mapStateToProps, mapDispatchToProps)(MovieToWatch)
 
+// To gain access to the store somewhere in our app, we use a function provided by react-redux, connect. 
+// By modifying a component's export statement and included connect, 
+// we are able to take data from our Redux store and map them to a component's props. 
+

@@ -12,8 +12,6 @@ const FilmsPage = (props) => {
   return (
   <div className="frameDisplayMovies">
   <ConnectedFilter />
-  <div><p>Here is a list of suggestion from popular movies.</p> 
-  <p>If the movie is in one of the list, it won't be shown here</p></div>
  {movies}
   </div>
   )

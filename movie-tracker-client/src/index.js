@@ -4,12 +4,9 @@ import {ConnectedApp} from './App';
 import { render } from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import React from 'react';
-
+// provider is passing in the redux store once for the the whole app
 import { Provider } from 'react-redux';
-// import { createStore, applyMiddleware } from 'redux';
-// import rootReducer from './reducers';
-// import thunk from 'redux-thunk';
-// import NavBar from './components/NavBar';
+
 import configureStore from './store/configureStore';
 
 
@@ -18,6 +15,7 @@ import configureStore from './store/configureStore';
 const store = configureStore();
 
 render(
+	//we pass the newly created store as a prop to the app component, each time the store changes the app is re-rendered
   <Provider store={store} >
     <ConnectedApp />
   </Provider>,

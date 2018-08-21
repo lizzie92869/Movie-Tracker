@@ -6,14 +6,15 @@ import MoviesApi from "../api/MoviesApi";
 export function fetchMovies() {
 
   return (dispatch) => {
-
+  // redux thunks allows us to return a function inside of our action creator instead of a plain JavaScript object.
+  // That returned function receives the store's dispatch function, and with that we are able to dispatch multiple actions: 
+  // one to place the state in a loading state, and another to update our store with the returned data.
   	const moviesDBKey = process.env.REACT_APP_MOVIEDB_KEY
     dispatch({ type: 'LOADING_MOVIES' });
 
     return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
       .then(response => response.json())
       .then(responseData => {
-      	//dispatch an action with a type and a payload
       	const movies1 = responseData.results
 
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${moviesDBKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2`)
@@ -27,7 +28,6 @@ export function fetchMovies() {
         .then(responseData => {
           const movies3 = responseData.results
           const movies123 = movies12.concat(movies3)
-
           dispatch({ type: 'FETCH_MOVIES', payload: movies123}) 
           });
         });   
