@@ -138,7 +138,7 @@ constructor(props){
           <div className="row">
             <div>Get suggestions by: </div>
             <div className="input-field col s2">
-              <input  onChange={this.updateSearchYear} placeholder="Year" id="year" type="text" className="validate" />
+              <input  onChange={this.updateSearchYear} placeholder="Year" type="text" className="validate" />
             </div>
             <div className="input-field col s3">
 
