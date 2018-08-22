@@ -143,7 +143,7 @@ constructor(props){
             <div className="input-field col s3">
 
             {/*drop menu*/}
-              <ConnectedDropdown searchGenre={this.state.searchGenre} searchGenreId={this.state.searchGenreId} changeStateSearchGenre={this.changeStateSearchGenre}/>
+              <ConnectedDropdown  changeStateSearchGenre={this.changeStateSearchGenre}/>
             </div>
             <div className="input-field col s2">
               <div><label>
