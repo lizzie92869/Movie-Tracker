@@ -100,12 +100,12 @@ showDropdownMenu = (event) => {
  // So the React Redux library requires us to specify which changes to the store's state should 
  // prompt a re-render of the application. 
  //like this we are adding the moviesFiltered prop to our component (we could have call it something else than the original state. We could also have give it any value)
-function mapStateToProps(state) {
-  console.log('in MapStateToProps in MovieToWatch.js')
-  return {
-    moviesFiltered: state.movies.moviesFiltered,
-  }
-}
+// function mapStateToProps(state) {
+//   console.log('in MapStateToProps in MovieToWatch.js')
+//   return {
+//     moviesFiltered: state.movies.moviesFiltered,
+//   }
+// }
 
 // Similarly, we can also take actions, and by wrapping them in a dispatch and an anonymous function, 
 //be able pass them as props
@@ -124,7 +124,7 @@ function mapDispatchToProps(dispatch) {
 
 // connect is a function that listens to every change in the store
 // here we connect our React part of the application and the Redux part of the application
-export const ConnectedDropdown = connect(mapStateToProps, mapDispatchToProps)(Dropdown)
+export const ConnectedDropdown = connect(null, mapDispatchToProps)(Dropdown)
 
 // To gain access to the store somewhere in our app, we use a function provided by react-redux, connect. 
 // By modifying a component's export statement and included connect, 
