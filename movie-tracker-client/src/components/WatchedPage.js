@@ -4,7 +4,6 @@ import {ConnectedMovieWatched} from './MovieWatched';
 import * as actions from '../actions/movieActions.js'
 
 const WatchedPage = (props) => {
-
 	const movies = props.moviesWatched.map(
 		film => <ConnectedMovieWatched film={film} />
 	)

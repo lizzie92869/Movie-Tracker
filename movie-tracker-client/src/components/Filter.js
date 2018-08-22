@@ -130,7 +130,7 @@ constructor(props){
           <div className="row">
             <div className="input-field col s5">
               {/*<form>*/}
-              <input onChange={this.updateSearchTerm} value={this.state.searchTerm} placeholder="Title" id="first_name" type="text" className="validate" />
+              <input onChange={this.updateSearchTerm} value={this.state.searchTerm} placeholder="Title" type="text" className="validate" />
                {/*<button onClick={this.handleSearchTermSubmit}>Search</button>*/}
               {/*</form>*/}
             </div>
