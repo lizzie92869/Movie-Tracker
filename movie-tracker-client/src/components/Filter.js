@@ -166,21 +166,22 @@ constructor(props){
   }
 }
 
-function mapStateToProps(state) {
+// function mapStateToProps(state) {
 
-  console.log('in MapStateToProps in Filter.js')
-  return {
-    moviesFiltered: state.movies.moviesFiltered,
-    moviesWatched: state.movies.moviesWatched,
-    moviesToWatch: state.movies.moviesToWatch,
-  }
-}
+//   console.log('in MapStateToProps in Filter.js')
+//   return {
+//     moviesFiltered: state.movies.moviesFiltered,
+//     moviesWatched: state.movies.moviesWatched,
+//     moviesToWatch: state.movies.moviesToWatch,
+//   }
+// }
 
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export const ConnectedFilter = connect(mapStateToProps, mapDispatchToProps)(Filter)
+// export const ConnectedFilter = connect(mapStateToProps, mapDispatchToProps)(Filter)
+export const ConnectedFilter = connect(null, mapDispatchToProps)(Filter)
 
 // To gain access to the store somewhere in our app, we use a function provided by react-redux, connect. 
 // By modifying a component's export statement and included connect, 
