@@ -7,7 +7,7 @@ The user can browse movies by title or get suggestions by year and/or genre and 
 Use the buttons under each movie to save it in a list and use the navigation buttons to view the lists. 
 The DB comes from the movie DB api. 
 
-#Where to read more about it
+#Where to read more about it :
 http://codingtalesbylizzie.com/react_project
 
 #How to install this application:
